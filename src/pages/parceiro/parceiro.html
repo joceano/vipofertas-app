@@ -1,0 +1,25 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title *ngIf="!isOn">Vip Ofertas</ion-title>
+		<ion-searchbar showCancelButton [(ngModel)]="pesquisa" (ionCancel)="ionCancel()" placeholder="Pesquisar" *ngIf="isOn"></ion-searchbar>
+		<ion-buttons end *ngIf="!isOn">
+			<button ion-button icon-left block (click)="toggleDetails()">
+				<ion-icon name="search"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+<ion-content padding id="page2">
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+	<ion-list inset>
+		<ion-item *ngFor="let parceiro of parceiros | search : pesquisa" (click)="carregarOfertas(parceiro.id)">
+			<ion-thumbnail item-left>
+				<img src="{{ ServerUrl }}{{ parceiro.imagem }}">
+			</ion-thumbnail>
+			<h2>{{parceiro.nome}}</h2>
+			<p>{{parceiro.ramo}}</p>
+		</ion-item>
+	</ion-list>
+</ion-content>

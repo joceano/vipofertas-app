@@ -1,0 +1,26 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title *ngIf="!isOn">Notificações</ion-title>
+		<!--<ion-searchbar showCancelButton [(ngModel)]="pesquisa" (ionCancel)="ionCancel()" placeholder="Pesquisar" *ngIf="isOn"></ion-searchbar>
+		<ion-buttons end *ngIf="!isOn">
+			<button ion-button icon-left block (click)="toggleDetails()">
+				<ion-icon name="search"></ion-icon>
+			</button>
+		</ion-buttons>-->
+	</ion-navbar>
+</ion-header>
+<ion-content padding>
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+	<ion-list inset>
+		<ion-item *ngFor="let notificacao of notificacoes | search : pesquisa" (click)="carregarDetalheNotificacao(notificacao)">
+            <ion-avatar item-start>
+                <img src="{{ ServerUrl }}{{notificacao.parceiro.imagem}}">
+              </ion-avatar>
+            <h2>{{notificacao.parceiro.nome}}</h2>
+            <p>{{notificacao.titulo}}</p>
+			<!--p>{{notificacao.descricao}}</p-->
+		</ion-item>
+	</ion-list>
+</ion-content>

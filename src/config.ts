@@ -1,0 +1,1 @@
+export const SERVER_URL = "http://35.247.207.3:8081/VipOfertas/";

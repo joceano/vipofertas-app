@@ -1,0 +1,28 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>Detalhes da Oferta</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content padding>
+	<ion-card>
+		<ion-card-header>
+			<ion-item>
+				<ion-avatar item-start class="avatar">
+					<img src="{{ ServerUrl }}{{ oferta?.parceiro?.imagem }}">
+				</ion-avatar>
+				<h2 class="negrito nome-parceiro">{{oferta?.parceiro?.nome}}</h2>
+			</ion-item>
+		</ion-card-header>
+		<ion-card-content>
+			<h2 class="negrito text-center">{{oferta?.nome}}</h2>
+			<p class="text-center">{{oferta?.descricao}} - {{oferta?.unidade}}</p>
+			<div class="text-center">
+				<p><span class="preco">De:</span><span class="preco" id="preco"> {{oferta?.preco | currency:'BRL':true:'1.2-2'}}</span></p>
+			</div>
+			<div class="text-center">
+				<p><span class="precopromo">Por:</span><span class="precopromo"> {{oferta?.precopromo | currency:'BRL':true:'1.2-2'}}</span></p>
+			</div>
+			<p id="validade">Oferta válida até {{oferta?.dtfinal | date: 'dd/MM/yyyy'}}, ou enquanto durarem os estoques.</p>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

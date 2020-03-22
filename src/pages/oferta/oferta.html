@@ -1,0 +1,26 @@
+﻿<ion-header>
+	<ion-navbar>
+		<ion-title *ngIf="!isOn">Promoções</ion-title>
+		<ion-searchbar showCancelButton [(ngModel)]="pesquisa" (ionCancel)="ionCancel()" placeholder="Pesquisar" *ngIf="isOn"></ion-searchbar>
+		<ion-buttons end *ngIf="!isOn">
+			<button ion-button icon-left block (click)="toggleDetails()">
+				<ion-icon name="search"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+<ion-content padding>
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+	<ion-list inset>
+		<ion-item *ngFor="let oferta of ofertas | search : pesquisa" (click)="carregarDetalheOferta(oferta.id)">
+			<ion-thumbnail item-left>
+				<img src="{{ ServerUrl }}{{ oferta.imagem }}">
+			</ion-thumbnail>
+			<h2>{{oferta.nome}}</h2>
+			<!--p>{{oferta.descricao}}</p-->
+			<h3 class="preco-promo">{{oferta.precopromo | currency:'BRL':true:'1.2-2'}}</h3>
+		</ion-item>
+	</ion-list>
+</ion-content>

@@ -1,0 +1,22 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>Detalhes da Notificação</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content padding>
+	<ion-card>
+		<ion-card-header>
+			<ion-item>
+				<ion-avatar item-start class="avatar">
+					<img src="{{ ServerUrl }}{{ notificacao?.parceiro?.imagem }}">
+				</ion-avatar>
+				<h2 class="negrito">{{notificacao?.parceiro?.nome}}</h2>
+			</ion-item>
+		</ion-card-header>
+		<ion-card-content>
+			<h2>{{notificacao?.titulo}}</h2>
+            <br>
+		  	<p>{{notificacao?.descricao}}</p>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

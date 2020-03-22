@@ -1,0 +1,7 @@
+{
+  "name": "VipOfertas",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
